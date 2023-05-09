@@ -5,3 +5,5 @@ The touch is a standard command used in the UNIX/Linux operating system to creat
 ```
 touch fileName
 ```
+
+![Usage of touch](https://github.com/AlperAkca79/cat/assets/91411319/8335edec-c433-4e45-b777-4905e6006c7e)
