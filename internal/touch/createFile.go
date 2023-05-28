@@ -5,6 +5,7 @@ import (
 	"os"
 	"path/filepath"
 
+	"github.com/cyucelen/marker"
 	"github.com/fatih/color"
 )
 
@@ -18,6 +19,7 @@ func CreateFile(fileName string) {
 
 	// check if the file exists in the current directory
 	fileInfo, err := os.Stat(filepath.Join(cwd, fileName))
+
 	if err != nil {
 		if os.IsNotExist(err) {
 			// create file
@@ -29,15 +31,14 @@ func CreateFile(fileName string) {
 			// close file
 			defer createFile.Close()
 
-			// set foreground green
-			color.Set(color.FgGreen)
+			// complete message
+			completeMessage := "Touching " + fileName
 
-			fmt.Print("Touching ")
+			// marking word "Touching"
+			emphasized := marker.Mark(completeMessage, marker.MatchAll("Touching"), color.New(color.FgGreen))
 
-			// unset foreground color
-			color.Unset()
-
-			fmt.Println(fileName)
+			// Printing complete message
+			fmt.Println(emphasized)
 		} else {
 			fmt.Println(err)
 		}
