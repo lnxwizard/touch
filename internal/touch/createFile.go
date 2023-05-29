@@ -5,46 +5,27 @@ import (
 	"os"
 	"path/filepath"
 
-	"github.com/cyucelen/marker"
-	"github.com/fatih/color"
+	"github.com/AlperAkca79/touch/pkg/utils"
 )
 
 func CreateFile(fileName string) {
 	// get current working directory
-	cwd, err := os.Getwd()
+	var cwd = utils.Getwd()
+	var filePath = filepath.Join(cwd, fileName)
+
+	// Validation
+	utils.FileValidation(filePath, cwd)
+
+	// create file
+	createFile, err := os.Create(filePath)
 	if err != nil {
-		fmt.Println(err)
+		fmt.Println("Error while creating ", fileName, ":", err)
 		os.Exit(1)
 	}
 
-	// check if the file exists in the current directory
-	fileInfo, err := os.Stat(filepath.Join(cwd, fileName))
+	// close file
+	defer createFile.Close()
 
-	if err != nil {
-		if os.IsNotExist(err) {
-			// create file
-			createFile, err := os.Create(fileName)
-			if err != nil {
-				fmt.Println("Error while creating ", fileName, ":", err)
-				os.Exit(1)
-			}
-			// close file
-			defer createFile.Close()
-
-			// complete message
-			completeMessage := "Touching " + fileName
-
-			// marking word "Touching"
-			emphasized := marker.Mark(completeMessage, marker.MatchAll("Touching"), color.New(color.FgGreen))
-
-			// Printing complete message
-			fmt.Println(emphasized)
-		} else {
-			fmt.Println(err)
-		}
-		return
-	}
-
-	// The file exists.
-	fmt.Println(fileInfo.Name(), "already exists in path:", cwd)
+	// Message success create
+	utils.TouchingMessage(fileName)
 }
