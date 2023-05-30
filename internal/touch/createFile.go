@@ -1,7 +1,6 @@
 package touch
 
 import (
-	"fmt"
 	"os"
 	"path/filepath"
 
@@ -19,7 +18,7 @@ func CreateFile(fileName string) {
 	// create file
 	createFile, err := os.Create(filePath)
 	if err != nil {
-		fmt.Println("Error while creating ", fileName, ":", err)
+		utils.ErrorMessage(fileName, err)
 		os.Exit(1)
 	}
 
