@@ -1,0 +1,2 @@
+01c0bc79704bfccfc24020eaf08477bb6cbd149eb22718ffd18933b673afd5f6  touch_2.1.0_windows_386.zip
+2ce72ee15603e606f227fffc06b0d4439c3845d6456ac316a6fe37a0c27c5328  touch_2.1.0_windows_amd64.zip
