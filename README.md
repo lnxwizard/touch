@@ -10,12 +10,12 @@ I decided to make this software because there is no touch command in Windows ope
 # How to Download?
 ### Via [Git](https://git-scm.com/)
 ```
-git clone https://github.com/AlperAkca79/touch.git
+git clone https://github.com/lnxwizard/touch.git
 ```
 
 ### Via [GitHub CLI](https://github.com/cli/cli)
 ```
-gh repo clone AlperAkca79/touch
+gh repo clone lnxwizard/touch
 ```
 
 # How to Use?
